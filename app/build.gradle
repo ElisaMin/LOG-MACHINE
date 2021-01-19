@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -24,30 +25,47 @@ android {
         }
     }
     buildFeatures {
-        compose true
+        viewBinding true
+        dataBinding true
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
         useIR = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.4.21'
-    }
 }
-
+ext { //version controller
+    room = "2.3.0-alpha04"
+    paging = "3.0.0-alpha12"
+    coroutines = "1.4.2"
+    lifecycle = "2.3.0-rc01"
+    recycler = "1.2.0-beta05"
+    activity = "1.2.0-rc01"
+    fragment = "1.3.0-rc01"
+}
 dependencies {
-
+    //paging
+    implementation "androidx.paging:paging-runtime-ktx:$paging"
+    //kotlin stuff
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    //stuff like activity core or something that doesn't matter
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "androidx.activity:activity-ktx:$activity"
+    implementation "androidx.fragment:fragment-ktx:$fragment"
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-rc01'
+    implementation "androidx.recyclerview:recyclerview:$recycler"
+    //lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+
     //No TEST
 //    testImplementation 'junit:junit:4.+'
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
