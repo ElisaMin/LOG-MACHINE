@@ -1,19 +1,27 @@
 package me.heizi.log_machine
 
 import android.app.Application
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import me.heizi.log_machine.persistence.DefaultDatabase
 
 /**
- *空Application
+ *空 Application
  */
+@HiltAndroidApp
+@AndroidEntryPoint
 class Application : Application() {
-//    companion object {
-//        private const val TAG = "Application"
-//    }
-//
-//    override fun onTrimMemory(level: Int) {
-//        super.onTrimMemory(level)
-//        Log.i(TAG, "onTrimMemory: $level")
-//    }
+    @DependencyInject.Database
+    lateinit var database: DefaultDatabase
 
+    override fun onCreate() {
+        super.onCreate()
+        GlobalScope.launch(IO) {
+            database.launched()
+        }
+    }
 
 }
