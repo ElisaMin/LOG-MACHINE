@@ -13,5 +13,4 @@ import me.heizi.log_machine.databinding.HomeFragmentBinding
 class HomeFragment : Fragment(R.layout.home_fragment) {
     val binding by lazy { HomeFragmentBinding.bind(requireView()) }
     val viewModel by viewModels<HomeViewModel>()
-
 }

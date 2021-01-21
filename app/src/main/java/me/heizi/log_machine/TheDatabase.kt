@@ -1,6 +1,7 @@
 package me.heizi.log_machine
 
 import me.heizi.log_machine.persistence.dao.ActionLogging
+import me.heizi.log_machine.persistence.dao.TagDao
 
 /**
  * The database
@@ -12,4 +13,5 @@ interface TheDatabase {
      * As action logging dao
      */
     fun asActionLoggingDao(): ActionLogging
+    fun asTagDao():TagDao
 }

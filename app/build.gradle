@@ -45,8 +45,12 @@ ext { //version controller
     activity = "1.2.0-rc01"
     fragment = "1.3.0-rc01"
     hilt = "1.0.0-alpha02"
+    navigation="2.3.2"
 }
 dependencies {
+    //nav
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
     //room databases
     implementation "androidx.room:room-runtime:$room"
     kapt "androidx.room:room-compiler:$room"

@@ -23,5 +23,6 @@ data class Log(
     val projectId :Int,
     val generate_time:String = Date().time.toString(),
     var text:String,
+    var color: String,
     val description:String,
 )

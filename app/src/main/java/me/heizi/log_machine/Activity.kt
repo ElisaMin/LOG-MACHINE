@@ -26,12 +26,10 @@ class Activity : AppCompatActivity() {
 
     }
 
-    /**
-     * On destroy
-     * TODO 记录表格
-     */
+
     override fun onDestroy() {
         super.onDestroy()
+        //记录摧毁事件
         lifecycleScope.launch(IO) {
             viewModel.repository.destroyingActivity()
         }

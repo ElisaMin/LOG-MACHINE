@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="defaultFontColor">#444</item>
+        <item name="secondaryFontColor">#777</item>
     </style>
 
     <style name="Theme.记忆机器.NoActionBar">

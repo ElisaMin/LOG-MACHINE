@@ -16,9 +16,15 @@ data class Project (
     val description:String,
     var rank:Double,
     @ColumnInfo(name = "logging")
-    var _isLogging:Int,
+    var _isLogging:Int = 0,
     val generate_time:String = Date().time.toString(),
     var defaultValue:String? = null,
     var color:String = "666666"
-)
+) {
+    public var isLogging
+        get() = _isLogging == 1
+        set(value) {
+            _isLogging =  if (value) 1 else 0
+        }
+}
 

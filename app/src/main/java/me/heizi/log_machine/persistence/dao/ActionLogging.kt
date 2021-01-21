@@ -2,47 +2,70 @@ package me.heizi.log_machine.persistence.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.Query
 import me.heizi.log_machine.persistence.entities.Action
 import me.heizi.log_machine.persistence.entities.Action.Actions.*
 import me.heizi.log_machine.persistence.entities.Log
 import me.heizi.log_machine.persistence.entities.Project
 
+/**
+ * 隐私记录利器
+ */
 @Dao
 interface ActionLogging {
+    /**
+     * Find tags that with log
+     *
+     * 查找log的tags
+     */
+    @Query("select tag_id from tags_log where log_id =:logId")
+    suspend fun findTagsThatWithLog(logId: Int):List<Int>
+
+    /**
+     * Find tags that with project
+     *
+     * 查找project的tags
+     */
+    @Query("select tag_id from tags_project where project_id =:projectId")
+    suspend fun findTagsThatWithProject(projectId: Int):List<Int>
 
     @Insert
-    fun insert(action: Action)
+    suspend fun insert(action: Action)
 
-    fun insert(action: Action.Actions,parameter:Any?=null){
+    /**
+     * 通过[Action.Actions]插入表格
+     *
+     * @param action
+     * @param parameter
+     */
+    suspend fun insert(action: Action.Actions,parameter:Any?=null){
         when(action) {
             OnlyActivityDestroy,
             SharedViewModelDestroy,
             ApplicationLaunched ->{
                 Action(
                     _action = action.id
-                ).let(::insert)
+                )
             }
             ProjectLaunched -> {
-                val project = parameter as Project
                 Action(
                     _action = action.id,
-                    target = project.id
+                    target = (parameter as Project).id
                 ).apply {
-                    tags = TODO("id;id;id")
-
-                }.let(::insert)
+                    tags = findTagsThatWithProject(target)
+                }
             }
             LogCalled -> {
-                val log = parameter as Log
                 Action(
                     _action = action.id,
-                    target = log.id
+                    target = (parameter as Log).id
                 ).apply {
-                    tags = TODO("id;id;id")
-
-                }.let(::insert)
+                    tags = findTagsThatWithLog(target)
+                }
             }
             else -> throw IllegalArgumentException("shouldn't send ${action.name} on logging a action")
+        }.let {
+            insert(it)
         }
     }
 }

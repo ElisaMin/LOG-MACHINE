@@ -38,6 +38,10 @@ interface Tags {
                 entity = LogEntity::class,
                 parentColumns = ["id"],
                 childColumns = ["project_id"]
+            ), ForeignKey(
+                entity = Tag::class,
+                parentColumns = ["id"],
+                childColumns = ["tag_id"]
             )
         ]
     )
@@ -46,6 +50,8 @@ interface Tags {
         val id : Int,
         @ColumnInfo(name = "project_id",index = true)
         val projectId :Int,
+        @ColumnInfo(name = "tag_id",index = true)
+        val tagId: Int,
     )
 
     /**
@@ -60,6 +66,10 @@ interface Tags {
                 entity = LogEntity::class,
                 parentColumns = ["id"],
                 childColumns = ["log_id"]
+            ), ForeignKey(
+                entity = Tag::class,
+                parentColumns = ["id"],
+                childColumns = ["tag_id"]
             )
         ]
     )
@@ -67,6 +77,8 @@ interface Tags {
         @PrimaryKey(autoGenerate = true)
         val id : Int,
         @ColumnInfo(name = "log_id",index = true)
-        val logId: Int
-    )
+        val logId: Int,
+        @ColumnInfo(name = "tag_id",index = true)
+        val tagId: Int,
+        )
 }

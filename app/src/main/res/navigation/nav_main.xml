@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="me.heizi.log_machine.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_appendFragment"
+            app:destination="@id/appendFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="me.heizi.log_machine.ui.detail.DetailFragment"
+        android:label="detail_fragment"
+        tools:layout="@layout/detail_fragment" />
+    <fragment
+        android:id="@+id/appendFragment"
+        android:name="me.heizi.log_machine.ui.append.AppendFragment"
+        android:label="append_fragment"
+        tools:layout="@layout/append_fragment" />
+</navigation>
