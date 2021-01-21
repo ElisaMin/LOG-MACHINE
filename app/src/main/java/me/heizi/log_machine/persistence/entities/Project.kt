@@ -16,7 +16,7 @@ data class Project (
     val description:String,
     var rank:Double,
     @ColumnInfo(name = "logging")
-    private var _isLogging:Int,
+    var _isLogging:Int,
     val generate_time:String = Date().time.toString(),
     var defaultValue:String? = null,
     var color:String = "666666"

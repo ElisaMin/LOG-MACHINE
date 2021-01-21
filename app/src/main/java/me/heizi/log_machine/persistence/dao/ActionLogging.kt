@@ -11,7 +11,7 @@ import me.heizi.log_machine.persistence.entities.Project
 interface ActionLogging {
 
     @Insert
-    fun insert(action: Action): Int
+    fun insert(action: Action)
 
     fun insert(action: Action.Actions,parameter:Any?=null){
         when(action) {

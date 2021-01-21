@@ -1,5 +1,6 @@
 package me.heizi.log_machine.persistence.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
@@ -18,7 +19,8 @@ import java.util.*
 data class Log(
     @PrimaryKey
     val id:Int=0,
-    private val project_id :Int,
+    @ColumnInfo(name = "project_id",index = true)
+    val projectId :Int,
     val generate_time:String = Date().time.toString(),
     var text:String,
     val description:String,

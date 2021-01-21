@@ -33,7 +33,7 @@ class Activity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         lifecycleScope.launch(IO) {
-            viewModel.database.destroyingActivity()
+            viewModel.repository.destroyingActivity()
         }
 
 

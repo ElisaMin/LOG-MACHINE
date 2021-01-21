@@ -19,9 +19,9 @@ data class Action(
 //    @ColumnInfo(typeAffinity = ColumnInfo.TEXT)
     var time:String = Date().time.toString(),
     @ColumnInfo(name = "tags")
-    private var _tags:String = "",
+    var _tags:String = "",
     @ColumnInfo(name = "action")
-    private var _action:Int = -3,
+    var _action:Int = -3,
     var target:Int = -1
 ) {
 
