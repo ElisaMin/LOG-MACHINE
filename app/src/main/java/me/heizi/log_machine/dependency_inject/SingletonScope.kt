@@ -38,8 +38,9 @@ object SingletonScope {
     @Singleton
     fun getActionRepository(
         @Database database: DefaultDatabase
-    )
-        = ActionRepository(database)
+    ) = ActionRepository(database)
+
+
 
 
 }

@@ -4,10 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
         <variable
             name="proj"
             type="me.heizi.log_machine.persistence.entities.Project" />
+        <variable
+            name="tags"
+            type="java.util.List&lt;String>" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -16,67 +20,55 @@
         app:contentPadding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <View
-                tools:background="@color/purple_700"
-                android:layout_marginVertical="4dp"
-                android:layout_width="wrap_content"
-                android:layout_height="16dp" />
             <TextView
                 android:text="@{proj.name}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/text"
                 tools:text="@string/app_name" />
-            <TextView
-                android:text="@{proj.description}"
-                android:layout_marginVertical="4dp"
-                android:textAppearance="@style/text.second"
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="@string/app_name"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@{proj.description}"
+                    android:layout_marginVertical="4dp"
+                    android:textAppearance="@style/text.second"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="16"
+                    tools:text="@string/app_name"/>
+                <View
+                    android:layout_weight="1"
+                    tools:background="@color/purple_700"
+                    android:layout_margin="4dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp" />
+            </LinearLayout>
 
 <!--            <HorizontalScrollView-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content">-->
 
                 <com.google.android.material.chip.ChipGroup
+                    android:tags_chip="@{tags}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <com.google.android.material.chip.Chip
-                        android:visibility="@{proj.isLogging?View.VISIBLE:View.GONE}"
+                        android:visibility="@{proj.isLogging? View.VISIBLE:View.GONE}"
                         android:textAppearance="@style/text.second"
                         android:text="正在进行"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <com.google.android.material.chip.Chip
-                        tools:text="@string/app_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <com.google.android.material.chip.Chip
-                        tools:text="@string/app_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <com.google.android.material.chip.Chip
-                        tools:text="@string/app_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <com.google.android.material.chip.Chip
-                        tools:text="@string/app_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <com.google.android.material.chip.Chip
-                        tools:text="@string/app_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.chip.ChipGroup>
 <!--            </HorizontalScrollView>-->
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </layout>

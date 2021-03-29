@@ -26,11 +26,9 @@ import androidx.room.Database as RoomDB
     ],
     version = 1,
     exportSchema = false
-
 )
 abstract class DefaultDatabase:RoomDatabase(), TheDatabase {
     companion object {
-
         operator fun invoke(context:Context): DefaultDatabase =
             Room.databaseBuilder(context, DefaultDatabase::class.java,"theDB").build()
     }

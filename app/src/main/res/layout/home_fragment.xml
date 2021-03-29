@@ -4,6 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewModel"
+            type="me.heizi.log_machine.ui.home.HomeViewModel" />
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+        <variable
+            name="addFabOnClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <FrameLayout
@@ -11,12 +20,27 @@
         android:layout_height="match_parent"
         tools:context=".ui.home.HomeFragment">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_outline_add_circle_outline_24"
+            android:onClick="@{addFabOnClick}"
+            android:focusable="true"
+            tools:ignore="ContentDescription" />
+
         <androidx.recyclerview.widget.RecyclerView
+            android:recyclerview_list="@{viewModel.allProjects}"
+            android:adapter="@{adapter}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:spanCount="2"
             tools:itemCount="12"
-            tools:listitem="@layout/project_home_item" />
+            tools:listitem="@layout/project_home_item" >
 
+        </androidx.recyclerview.widget.RecyclerView>
     </FrameLayout>
 </layout>

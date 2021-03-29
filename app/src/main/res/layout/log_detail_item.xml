@@ -9,119 +9,101 @@
             type="me.heizi.log_machine.persistence.entities.Log" />
     </data>
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-
-
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="4dp"
+            android:layout_margin="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:cardBackgroundColor="@color/teal_700" />
-
-            <EditText
-                android:id="@+id/textView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@null"
-                android:cursorVisible="true"
-                android:ellipsize="end"
-                android:text="@{log.description}"
-                android:hint="无详细"
-                android:lines="1"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textAppearance="@style/text.second"
-                app:layout_constraintBottom_toBottomOf="@+id/textView3"
-                app:layout_constraintEnd_toStartOf="@+id/textView3"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/cardView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:text="aaaaaaaaaaaaaaaaa" />
-
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                    tools:cardBackgroundColor="@color/teal_700"
+                    app:cardCornerRadius="2dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"/>
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ellipsize="end"
+                    android:text="@{log.description}"
+                    tools:text="aaaaaaaaaaaaaa"
+                    android:hint="无详细"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAppearance="@style/text.second" />
+                <TextView
+                    android:layout_weight="4"
+                    android:text="@{log.generate_time.toString()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/text.second"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@tools:sample/date/hhmmss" />
+            </LinearLayout>
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:text="@{log.text}"
-                android:textAppearance="@style/text"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-                tools:text="@tools:sample/full_names" />
-
-            <TextView
-                android:text="@{log.generate_time.toString()}"
-                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:textAppearance="@style/text.second"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@tools:sample/date/hhmmss" />
+                android:layout_margin="8dp"
+                android:text="@{log.text}"
+                android:textAppearance="@style/text"
+                tools:text="@tools:sample/full_names" />
+        </LinearLayout>
 
-            <HorizontalScrollView
-                android:id="@+id/horizontalScrollView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintVertical_bias="0.0">
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+<!--            <HorizontalScrollView-->
+<!--                android:id="@+id/horizontalScrollView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.0"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/textView"-->
+<!--                app:layout_constraintVertical_bias="0.0">-->
 
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView">
+<!--                <com.google.android.material.chip.ChipGroup-->
+<!--                    android:id="@+id/chipGroup"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView">-->
 
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+<!--                    <com.google.android.material.chip.Chip-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
 
-                        android:checkable="true"
-                        android:text="贴TAG"
-                        android:textAppearance="@style/text.second"
-                        android:textSize="11sp"
-                        app:chipIcon="@drawable/ic_outline_add_circle_outline_24"
-                        app:chipIconSize="16dp"
-                        app:chipMinHeight="24dp" />
-                </com.google.android.material.chip.ChipGroup>
-            </HorizontalScrollView>
+<!--                        android:checkable="true"-->
+<!--                        android:text="贴TAG"-->
+<!--                        android:textAppearance="@style/text.second"-->
+<!--                        android:textSize="11sp"-->
+<!--                        app:chipIcon="@drawable/ic_outline_add_circle_outline_24"-->
+<!--                        app:chipIconSize="16dp"-->
+<!--                        app:chipMinHeight="24dp" />-->
+<!--                </com.google.android.material.chip.ChipGroup>-->
+<!--            </HorizontalScrollView>-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
     </androidx.cardview.widget.CardView>
 </layout>
