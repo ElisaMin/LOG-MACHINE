@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
@@ -27,6 +28,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     private suspend fun getTag(project: Project) = emptyList<String>()
     private fun onItemClick(project: Project) {
         Log.i(TAG, "onItemOnClick: $project :clicked")
+        findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundleOf("id" to project.id))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,7 +37,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         binding.setAddFabOnClick {
-            findNavController().navigate()
+            findNavController().navigate(R.id.action_homeFragment_to_appendFragment)
         }
     }
 

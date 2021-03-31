@@ -7,6 +7,9 @@
         <variable
             name="log"
             type="me.heizi.log_machine.persistence.entities.Log" />
+        <variable
+            name="f"
+            type="android.view.View.OnFocusChangeListener" />
     </data>
 
 
@@ -33,22 +36,24 @@
                     android:layout_margin="4dp"
                     android:layout_width="8dp"
                     android:layout_height="8dp"/>
+
                 <EditText
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:cursorVisible="true"
                     android:ellipsize="end"
-                    android:text="@{log.description}"
-                    tools:text="aaaaaaaaaaaaaa"
                     android:hint="无详细"
                     android:lines="1"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textAppearance="@style/text.second" />
+                    android:text="@{log.description}"
+                    android:textAppearance="@style/text.second"
+                    tools:ignore="TouchTargetSizeCheck"
+                    tools:text="aaaaaaaaaaaaaa" />
                 <TextView
                     android:layout_weight="4"
                     android:text="@{log.generate_time.toString()}"

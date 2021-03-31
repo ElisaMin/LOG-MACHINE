@@ -21,7 +21,12 @@
         android:id="@+id/detailFragment"
         android:name="me.heizi.log_machine.ui.detail.DetailFragment"
         android:label="detail_fragment"
-        tools:layout="@layout/detail_fragment" />
+        tools:layout="@layout/detail_fragment" >
+        <argument
+            android:name="project_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
     <dialog
         android:id="@+id/appendFragment"
         android:name="me.heizi.log_machine.ui.append.AppendFragment"

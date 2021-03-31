@@ -1,46 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.detail.DetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="me.heizi.log_machine.ui.detail.DetailViewModel" />
+        <variable
+            name="logsAdapter"
+            type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+        <variable
+            name="endIconOnClick"
+            type="android.view.View.OnClickListener" />
+    </data>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        android:paddingBottom="64dp"
-        tools:itemCount="20"
-        tools:listitem="@layout/log_detail_item" />
+        tools:context=".ui.detail.DetailFragment">
 
-    <androidx.cardview.widget.CardView
-        android:background="#EEFFFFFF"
-        app:cardBackgroundColor="#EEFFFFFF"
-        android:layout_width="match_parent"
-        android:layout_gravity="bottom|center"
-        android:layout_margin="10dp"
-        android:padding="8dp"
-        android:elevation="1dp"
-        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginHorizontal="8dp"
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="追加信息..."
-            android:padding="4dp"
-            app:boxBackgroundMode="outline"
-            app:endIconCheckable="true"
-            app:endIconDrawable="@drawable/ic_outline_add_circle_outline_24"
-            app:endIconMode="custom"
-            app:helperText="点击旁边的加号即可完成添加">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </androidx.cardview.widget.CardView>
+            android:layout_height="match_parent"
+            android:recyclerview_list="@{viewModel.logs}"
+            android:padding="8dp"
+            android:paddingBottom="64dp"
+            tools:itemCount="20"
+            tools:listitem="@layout/log_detail_item" />
 
-</FrameLayout>
+        <androidx.cardview.widget.CardView
+            android:background="#EEFFFFFF"
+            app:cardBackgroundColor="#EEFFFFFF"
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="10dp"
+            android:padding="8dp"
+            android:elevation="1dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:text="@{viewModel.inputText}"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginHorizontal="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="追加信息..."
+                android:padding="4dp"
+                android:endIconClicked="@{endIconOnClick}"
+                app:boxBackgroundMode="outline"
+                app:endIconCheckable="true"
+                app:endIconDrawable="@drawable/ic_outline_add_circle_outline_24"
+                app:endIconMode="custom"
+                app:helperText="点击旁边的加号即可完成添加">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+</layout>
