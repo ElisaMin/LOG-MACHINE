@@ -17,7 +17,7 @@ import java.util.*
     ]
 )
 data class Log(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id:Int=0,
     @ColumnInfo(name = "project_id",index = true)
     val projectId :Int,

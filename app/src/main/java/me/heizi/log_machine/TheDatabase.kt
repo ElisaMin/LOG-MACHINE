@@ -2,6 +2,7 @@ package me.heizi.log_machine
 
 import me.heizi.log_machine.persistence.dao.ActionLogging
 import me.heizi.log_machine.persistence.dao.TagDao
+import me.heizi.log_machine.repositories.LogsRepository
 import me.heizi.log_machine.repositories.ProjectionRepository
 
 /**
@@ -17,4 +18,5 @@ interface TheDatabase {
     fun asTagDao():TagDao
 
     val projects:ProjectionRepository
+    val logs:LogsRepository
 }

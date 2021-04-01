@@ -11,6 +11,7 @@ import androidx.viewbinding.ViewBinding
 object Utils {
 }
 
+private const val TAG = "Utils"
 class BindingHolder<B:ViewBinding>(val binding:B): RecyclerView.ViewHolder(binding.root)
 abstract class BindingListAdapter<T:Any,B:ViewBinding> (areItemSame:(oldItem:T,newItem:T)->Boolean) : ListAdapter<T,BindingHolder<B>> (ItemCallback.itemCallback(areItemSame)) {
     abstract fun getBinding(parent: ViewGroup,layoutInflater: LayoutInflater):B

@@ -11,6 +11,8 @@ import me.heizi.log_machine.persistence.entities.Project
 interface ProjectionRepository {
     @get:Query("select * from projects")
     val all:Flow<List<Project>>
+    @Insert
+    fun resign(project: Project)
 }
 
 
@@ -19,12 +21,12 @@ interface LogsRepository {
     @get:Query("select * from logs")
     val all:Flow<List<Log>>
 
-    @Query("select * from logs where id = :id")
+    @Query("select * from logs where project_id = :id")
     fun getLogsByID(id:Int):Flow<List<Log>>
 
     @Query("update logs set description =:msg where id=:id")
     fun updateLogTitle(id:Int,msg:String)
 
     @Insert
-    fun insert(log: Log):Int
+    fun insert(log: Log)
 }

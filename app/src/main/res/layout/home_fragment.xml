@@ -32,8 +32,8 @@
             tools:ignore="ContentDescription" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:recyclerview_list="@{viewModel.allProjects}"
             android:adapter="@{adapter}"
+            android:recyclerview_list="@{viewModel.allProjects}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"

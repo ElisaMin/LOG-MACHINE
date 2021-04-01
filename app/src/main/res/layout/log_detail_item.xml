@@ -52,6 +52,7 @@
                     android:singleLine="true"
                     android:text="@{log.description}"
                     android:textAppearance="@style/text.second"
+                    android:focusChanged="@{f}"
                     tools:ignore="TouchTargetSizeCheck"
                     tools:text="aaaaaaaaaaaaaa" />
                 <TextView

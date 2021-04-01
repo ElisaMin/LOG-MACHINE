@@ -7,8 +7,12 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import me.heizi.log_machine.R
 import me.heizi.log_machine.databinding.HomeFragmentBinding
 import me.heizi.log_machine.persistence.entities.Project
@@ -18,6 +22,7 @@ import me.heizi.log_machine.persistence.entities.Project
  *
  * 主页展示
  */
+@AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.home_fragment) {
 
 
@@ -31,10 +36,17 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundleOf("id" to project.id))
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel
+        lifecycleScope.launch(Dispatchers.Default) {
+            viewModel.start()
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.adapter = adapter
         binding.viewModel = viewModel
+        binding.adapter = adapter
         binding.lifecycleOwner = this
         binding.setAddFabOnClick {
             findNavController().navigate(R.id.action_homeFragment_to_appendFragment)

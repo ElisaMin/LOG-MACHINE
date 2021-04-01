@@ -14,5 +14,7 @@ object RepositoryProviders {
 
     @Provides
     fun getProjectionRepository(@Database db:DefaultDatabase)=db.projects
+    @Provides
+    fun getLogsRepository(@Database db:DefaultDatabase)=db.logs
 
 }

@@ -13,6 +13,9 @@ import javax.inject.Inject
  */
 @HiltAndroidApp
 class Application : Application() {
+    companion object {
+        const val TAG = "Application"
+    }
     @Inject lateinit var repository: ActionRepository
 
     override fun onCreate() {

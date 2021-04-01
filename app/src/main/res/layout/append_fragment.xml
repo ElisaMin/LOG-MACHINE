@@ -4,21 +4,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="vm"
+            type="me.heizi.log_machine.ui.append.AppendViewModel" />
+        <variable
+            name="append"
+            type="android.view.View.OnClickListener" />
     </data>
     <androidx.appcompat.widget.LinearLayoutCompat
         android:padding="8dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_marginVertical="6dp"
-            android:text="添加新的项目"
-            android:textAppearance="@style/text.title"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginVertical="6dp"
+                android:text="添加新的项目"
+                android:textAppearance="@style/text.title"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <com.google.android.material.button.MaterialButton
+                android:text="添加"
+                android:onClickListener="@{append}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        </LinearLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:hint="标题"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -26,9 +42,9 @@
             android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:text="@={vm.title}"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -38,9 +54,9 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:text="@={vm.description}"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
 <!--        <com.google.android.material.textfield.TextInputLayout-->
@@ -65,11 +81,11 @@
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:text="取消" />-->
-            <Button
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="添加" />
+
 <!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

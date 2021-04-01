@@ -25,6 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:recyclerview_list="@{viewModel.logs}"
+            android:adapter="@{logsAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:padding="8dp"
             android:paddingBottom="64dp"
             tools:itemCount="20"
@@ -41,7 +43,6 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:text="@{viewModel.inputText}"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginHorizontal="8dp"
                 android:layout_width="match_parent"
@@ -56,6 +57,7 @@
                 app:helperText="点击旁边的加号即可完成添加">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:text="@={viewModel.inputText}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
